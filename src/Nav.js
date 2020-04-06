@@ -10,12 +10,12 @@ function Nav() {
   return (
   <nav> 
     <Link to="/recipes">
-      <h3>logo
+      <h3 className = "logo-link">
       <img src= {logoImg} alt="Smiley face" /> 
       
       </h3>
       </Link> 
-      <ul className="nav-links">
+      <ul className="nav-link">
       <Link to="/about">
           <li>About</li>
           </Link> 

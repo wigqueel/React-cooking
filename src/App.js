@@ -1,10 +1,11 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 //import logo from './logo.svg';
 import './App.scss';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Recipes from './Recipes';
-import Add from './Edit';
-import Edit from './Add';
+import Add from './Add';
+import Edit from './Edit';
 import DetailRecipes from './DetailRecipes';
 import Nav from './Nav';
 
