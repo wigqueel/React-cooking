@@ -15,7 +15,9 @@ function Recipes() {
 
     const [items, setItems] = useState([]);
     const [searchInput, setSearchInput] = useState("");
-
+const handleChange = function (e) {
+    setSearchInput(e.target.value)
+}
 
     const fretchItems = async () => {
         const data = await fetch('http://localhost:3000/recipes');
@@ -31,19 +33,14 @@ function Recipes() {
             <Container>
                 <InputGroup className="mb-3">
                     <FormControl
-                        placeholder="Recipient's username"
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
+                        placeholder="Find your recipe"
+                      
                         onChange={
-                            function (e) {
-                                setSearchInput(e.target.value)
-                            }
+                            handleChange
                         }
                         value={searchInput}
                     />
-                    <InputGroup.Append>
-                        <Button variant="outline-secondary">Button</Button>
-                    </InputGroup.Append>
+                    
                 </InputGroup>
             </Container>
 

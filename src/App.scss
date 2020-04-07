@@ -1,11 +1,11 @@
 .App {
   text-align: center;
 }
-body{
+body {
   margin: 0;
 }
 a {
-  text-decoration: none!important;
+  text-decoration: none !important;
 }
 .App-logo {
   height: 40vmin;
@@ -67,9 +67,16 @@ nav {
     height: 50px;
     width: 50px;
   }
+  img:hover {
+    filter: opacity(1.5);
+    filter: brightness(50%);
+  }
 }
 
 .recipes-body {
+  .container {
+    padding: 30px 0;
+  }
 }
 
 .items-and-photo:hover {
@@ -82,42 +89,52 @@ nav {
   box-shadow: 21px 29px 10px -5px rgba(0, 0, 0, 0.53);
   .photo-bbq {
     transition: all 0.1s ease-in-out;
-    
   }
 }
 
 .items-and-photo {
   //flex-wrap: wrap;
- 
+
   .photo-bbq {
     height: 250px;
     width: 250px;
     //filter: blur(2px);
     border-radius: 25px;
     padding: 20px 20px;
-    
-    
   }
-  @media only screen and (max-width: 700px){
-    .photo-bbq
-    {
+  @media only screen and (max-width: 700px) {
+    .photo-bbq {
       object-fit: cover;
-    width: 100%;
+      width: 100%;
     }
     flex-direction: column;
-    
   }
 
   display: flex;
   flex-direction: row;
   .items {
-
-   // max-width: 600px;
+    // max-width: 600px;
     min-width: 300px;
     padding: 0 30px;
     flex-direction: column;
     .short-desc {
-     padding-top: 20px; ;
+      padding-top: 20px;
     }
+  }
+}
+.add-menu {
+  .add-h {
+    padding: 20px 0;
+  }
+  .mb-3 {
+    display: flex;
+    flex-direction: column;
+  }
+  .add-form {
+    padding: 20px 0;
+    margin: 20px 0;
+  }
+  .add-button {
+    padding: 15px 100px ;
   }
 }
