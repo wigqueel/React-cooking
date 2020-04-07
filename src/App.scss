@@ -133,8 +133,23 @@ nav {
   .add-form {
     padding: 20px 0;
     margin: 20px 0;
+    
   }
   .add-button {
-    padding: 15px 100px ;
+    padding: 15px 100px;
   }
+}
+
+.Add-butt {
+  margin-left: 10px;
+}
+
+.detail-page {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 7%;
+}
+.items-long
+{
+  padding-top: 30px;
 }

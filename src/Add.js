@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './App.scss';
+import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
-import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+
 
 function Add() {
 
@@ -14,11 +16,27 @@ function Add() {
     setRecipe({ ...recipe, [e.target.name]: e.target.value })
     console.log(recipe);
     console.log(e.target);
+    
   }
-  const handleSubmit = function (e) {
-    e.preventDefault();
+
+  let history = useHistory();
+  const handleSubmit = function () {
+   
     
     console.log({recipe, createDate:new Date().getTime() });
+
+    
+      // POST request using fetch inside useEffect React hook
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({...recipe, createDate:new Date().getTime() })
+      };
+      fetch('http://localhost:3000/recipes', requestOptions)
+          .then(history.push("/"))
+          
+  // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  
   }
   return (
 
@@ -63,7 +81,9 @@ function Add() {
             />
 
           </InputGroup>
+         
           <Button type="submit" className="add-button" variant="success">Add</Button>{' '}
+          
         </form>
       </Container>
 

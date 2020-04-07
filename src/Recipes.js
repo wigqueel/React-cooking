@@ -34,13 +34,16 @@ const handleChange = function (e) {
                 <InputGroup className="mb-3">
                     <FormControl
                         placeholder="Find your recipe"
-                      
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
                         onChange={
                             handleChange
                         }
                         value={searchInput}
                     />
-                    
+                    <Link key to={"/Add"} >
+                    <Button className = "Add-butt" variant="success">Add</Button>{' '}
+                    </Link>
                 </InputGroup>
             </Container>
 
