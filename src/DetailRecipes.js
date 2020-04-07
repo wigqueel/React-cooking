@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import bbq from "./img/bbq.jpg";
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
+import { useHistory } from 'react-router';
 
 function DetailRecipes() {
 
@@ -23,10 +24,27 @@ function DetailRecipes() {
     setItems(items);
   }
 
+  let history = useHistory();
+  const handleSubmit = function (e) {
+
+    e.preventDefault();
+    console.log(recipeId)
+
+
+    // POST request using fetch inside useEffect React hook
+    const requestOptions = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+
+    };
+    fetch('http://localhost:3000/recipes/' + recipeId, requestOptions)
+      .then(history.push("/"))
+
+  }
   return (
 
     <div>
-     
+
       <div className="detail-page">
 
         <Image fluid src={bbq} alt="Smiley face" className="photo-bbq" />
@@ -37,10 +55,12 @@ function DetailRecipes() {
         </div>
       </div>
 
-      
-      <Button as={Link} to={"/edit/"+recipeId} className = "edit-butt" variant="success">Edit</Button>{' '}
-      <Button className = "delete-butt" variant="danger">Delete</Button>{' '}
-      
+      <div className="buttons-e-d">
+        <Button as={Link} to={"/edit/" + recipeId} className="edit-butt" variant="success">Edit</Button>{' '}
+        <form onSubmit={handleSubmit}>
+          <Button type="submit" className="delete-butt" variant="danger">Delete</Button>{' '}
+        </form>
+      </div>
     </div>
   );
 }

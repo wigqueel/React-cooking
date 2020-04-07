@@ -33,7 +33,7 @@ function Edit() {
     };
     fetch('http://localhost:3000/recipes/' + recipeId, requestOptions)
       .then(response => response.json())
-      .then(history.push("/"))
+      .then(history.goBack())
 
   }
 
@@ -92,6 +92,7 @@ function Edit() {
             value={recipe.longDesc}
           />
           <Button type="submit" className="add-button" variant="success">Edit</Button>
+          
         </Form>
       </Container>
     </div>
