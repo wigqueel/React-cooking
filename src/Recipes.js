@@ -14,11 +14,17 @@ function Recipes() {
     }, []);
     const [sortAsc, setSortAsc] = useState(!!localStorage.getItem('sortAsc'));
     const [items, setItems] = useState([]);
-    const [searchInput, setSearchInput] = useState("");
-const handleChange = function (e) {
-    setSearchInput(e.target.value)
-}
-
+    
+    const [searchInput, setSearchInput] = useState(localStorage.getItem("searchInput") || "");
+    const [searchCategory, setSearchCategory] = useState(localStorage.getItem("searchCategory") || "");
+    const handleChange = function (e) {
+        setSearchInput(e.target.value)
+        localStorage.setItem("searchInput", e.target.value);
+    }
+    const handleCatChange = function (e) {
+        setSearchCategory(e.target.value)
+        localStorage.setItem("searchCategory", e.target.value);
+    }
     const fretchItems = async () => {
         const data = await fetch('http://localhost:3000/recipes');
 
@@ -29,20 +35,20 @@ const handleChange = function (e) {
 
     const sortByDate = (recipes) => {
         return recipes.sort((a, b) => {
-          return sortAsc ? a.createDate - b.createDate : b.createDate -
-            a.createDate;
+            return sortAsc ? a.createDate - b.createDate : b.createDate -
+                a.createDate;
         });
-      };
-    
-      const filterAndSortRecipes = (recipes) => {
+    };
+
+    const filterAndSortRecipes = (recipes) => {
         return sortByDate(recipes);
-      };
+    };
 
     return (
         <div className="recipes-body">
             <Container>
-            <h1 className="q">Recipes Page</h1>
-            
+                <h1 className="q">Recipes Page</h1>
+
                 <InputGroup className="mb-3">
                     <FormControl
                         placeholder="Find your recipe"
@@ -54,15 +60,32 @@ const handleChange = function (e) {
                         value={searchInput}
                     />
                     <Link key to={"/Add"} >
-                    <Button className = "Add-butt" variant="success">Add</Button>{' '}
+                        <Button className="Add-butt" variant="success">Add</Button>{' '}
                     </Link>
+                </InputGroup>
+                <InputGroup className="mb-3">
+                    <FormControl
+                        placeholder="Find your category"
+                        aria-label="Recipient's "
+                        aria-describedby="basic-addon2"
+                        onChange={
+                            handleCatChange
+                        }
+                        value={searchCategory}
+                    />
+                    
                 </InputGroup>
             </Container>
 
-            { filterAndSortRecipes(items).filter(function(el) {
-             return (el.title.toLowerCase().includes(searchInput.toLowerCase()))
+           
+            
+
+            {filterAndSortRecipes(items).filter(function (el) {
+                return (el.title.toLowerCase().includes(searchInput.toLowerCase()))
             }
-            ).map(item => (
+            ).filter(function (el) {
+                return (el.category.toLowerCase().includes(searchCategory.toLowerCase()))
+            }).map(item => (
                 <Link key={item.id} to={"/recipes/" + item.id} >
                     <div className="items-and-photo">
 
