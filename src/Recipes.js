@@ -12,7 +12,7 @@ function Recipes() {
     useEffect(() => {
         fretchItems();
     }, []);
-
+    const [sortAsc, setSortAsc] = useState(!!localStorage.getItem('sortAsc'));
     const [items, setItems] = useState([]);
     const [searchInput, setSearchInput] = useState("");
 const handleChange = function (e) {
@@ -27,6 +27,17 @@ const handleChange = function (e) {
         setItems(items);
     }
 
+    const sortByDate = (recipes) => {
+        return recipes.sort((a, b) => {
+          return sortAsc ? a.createDate - b.createDate : b.createDate -
+            a.createDate;
+        });
+      };
+    
+      const filterAndSortRecipes = (recipes) => {
+        return sortByDate(recipes);
+      };
+
     return (
         <div className="recipes-body">
             <Container>
@@ -35,7 +46,7 @@ const handleChange = function (e) {
                 <InputGroup className="mb-3">
                     <FormControl
                         placeholder="Find your recipe"
-                        aria-label="Recipient's username"
+                        aria-label="Recipient's "
                         aria-describedby="basic-addon2"
                         onChange={
                             handleChange
@@ -48,7 +59,7 @@ const handleChange = function (e) {
                 </InputGroup>
             </Container>
 
-            {items.filter(function(el) {
+            { filterAndSortRecipes(items).filter(function(el) {
              return (el.title.toLowerCase().includes(searchInput.toLowerCase()))
             }
             ).map(item => (
