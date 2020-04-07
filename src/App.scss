@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  //text-align: center;
 }
 body {
   margin: 0;
@@ -95,6 +95,7 @@ nav {
 }
 
 .items-and-photo {
+  margin-bottom: 10px;
   //flex-wrap: wrap;
   border: 5px;
   .photo-bbq {
@@ -115,6 +116,8 @@ nav {
   display: flex;
   flex-direction: row;
   .items {
+    border-bottom: 1px solid #ced4da;
+    padding-bottom: 10px;
     // max-width: 600px;
     min-width: 300px;
     padding: 0 30px;
@@ -137,7 +140,7 @@ nav {
     margin: 20px 0;
   }
   .add-button {
-    padding: 15px 100px;
+   // padding: 15px 100px;
   }
 }
 
@@ -169,4 +172,26 @@ nav {
   justify-content: center;
 
   flex-direction: row;
+}
+.text-left
+{
+  justify-items: left;
+}
+
+.butt-ed
+{
+  display: flex;
+  justify-content: center;
+}
+
+.d
+{
+  margin: 0 20px;
+
+}
+
+.q
+{
+  text-align: center;
+  padding-bottom: 2%;
 }

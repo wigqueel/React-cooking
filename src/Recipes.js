@@ -29,8 +29,9 @@ const handleChange = function (e) {
 
     return (
         <div className="recipes-body">
-            <h1>Recipes Page</h1>
             <Container>
+            <h1 className="q">Recipes Page</h1>
+            
                 <InputGroup className="mb-3">
                     <FormControl
                         placeholder="Find your recipe"

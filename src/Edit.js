@@ -52,7 +52,7 @@ function Edit() {
   return (
     <div>
       <Container>
-        <h2 >ads</h2>
+        <h2 ></h2>
         <Form onSubmit={handleSubmit}>
           <Form.Group controlId="formBasicTitle">
             <Form.Label className="text-left" >Title:</Form.Label>
@@ -67,6 +67,7 @@ function Edit() {
               placeholder="Enter title:"
             />
           </Form.Group>
+          <Form.Label className="text-left" >Сategory:</Form.Label>
           <FormControl className="add-form mb-3"
             placeholder="category:"
             onChange={
@@ -75,6 +76,7 @@ function Edit() {
             name="category"
             value={recipe.category}
           />
+          <Form.Label className="text-left" >Short Description:</Form.Label>
           <FormControl className="add-form mb-3"
             placeholder="shortDesc:"
             onChange={
@@ -83,6 +85,7 @@ function Edit() {
             name="shortDesc"
             value={recipe.shortDesc}
           />
+          <Form.Label className="text-left" >Long Description</Form.Label>
           <FormControl className="add-form mb-3"
             placeholder="longDesc:"
             onChange={
@@ -91,8 +94,10 @@ function Edit() {
             name="longDesc"
             value={recipe.longDesc}
           />
-          <Button type="submit" className="add-button" variant="success">Edit</Button>
-          
+          <div className= "butt-ed">
+          <Button type="submit" className="add-button d" variant="success">Edit</Button>
+          <Button as={Link} to={"/recipes/" + recipeId} className="edit-butt d" variant="dark">Back</Button>{' '}
+          </div>
         </Form>
       </Container>
     </div>
