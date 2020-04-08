@@ -8,7 +8,7 @@ import Add from './Add';
 import Edit from './Edit';
 import DetailRecipes from './DetailRecipes';
 import Nav from './Nav';
-
+import About from './About'
 function App() {
 
 
@@ -22,6 +22,7 @@ function App() {
       <Route path = "/recipes/:recipeId" exact component = {DetailRecipes}/>
       <Route path = "/add"  component = {Add}/>
       <Route path = "/edit/:recipeId"  component = {Edit}/>
+      <Route path = "/about"  component = {About}/>
     </Switch>
 
     </div>  

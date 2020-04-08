@@ -95,7 +95,7 @@ function Edit() {
             value={recipe.longDesc}
           />
           <div className= "butt-ed">
-          <Button type="submit" className="add-button d" variant="success">Edit</Button>
+          <Button type="submit" className="add-button d" variant="info">Edit</Button>
           <Button as={Link} to={"/recipes/" + recipeId} className="edit-butt d" variant="dark">Back</Button>{' '}
           </div>
         </Form>

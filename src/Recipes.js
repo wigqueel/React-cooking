@@ -11,7 +11,7 @@ import { useParams } from "react-router";
 import Container from 'react-bootstrap/Container';
 
 function Recipes() {
-    
+
     let { recipeId } = useParams();
     const [sortAsc, setSortAsc] = useState(!!localStorage.getItem('sortAsc'));
     const [items, setItems] = useState([]);
@@ -26,7 +26,7 @@ function Recipes() {
         setSearchCategory(e.target.value)
         localStorage.setItem("searchCategory", e.target.value);
     }
-    
+
     let history = useHistory();
     const handleSubmit = function (recipeId) {
         console.log(recipeId)
@@ -107,6 +107,13 @@ function Recipes() {
                 return (el.category.toLowerCase().includes(searchCategory.toLowerCase()))
             }).map(item => (
                 <>
+                    <div className="main-buttons"> 
+                        <div className="buttons-e-d">
+                            <Button as={Link} to={"/edit/" + item.id} className="f n edit-butt" variant="info">Edit</Button>{' '}
+
+                            <Button onClick={() => handleSubmit(item.id)} className="f  delete-butt" variant="danger">X</Button>{' '}
+                        </div>
+                    </div>
                     <Link key={item.id} to={"/recipes/" + item.id} >
                         <div className="items-and-photo">
 
@@ -119,12 +126,7 @@ function Recipes() {
                         </div>
                     </Link>
 
-                    <div className="buttons-e-d">
-                        <Button as={Link} to={"/edit/" + item.id} className="edit-butt" variant="success">Edit</Button>{' '}
 
-                        <Button onClick={() => handleSubmit(item.id)} className="delete-butt" variant="danger">Delete</Button>{' '}
-
-                    </div>
                 </>
             ))}
 

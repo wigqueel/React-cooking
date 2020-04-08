@@ -58,7 +58,7 @@ function DetailRecipes() {
       </div>
 
       <div className="buttons-e-d">
-        <Button as={Link} to={"/edit/" + recipeId} className="edit-butt" variant="success">Edit</Button>{' '}
+        <Button as={Link} to={"/edit/" + recipeId} className="edit-butt" variant="info">Edit</Button>{' '}
         <form onSubmit={handleSubmit}>
           <Button type="submit" className="delete-butt" variant="danger">Delete</Button>{' '}
         </form>
