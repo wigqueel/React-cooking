@@ -9,20 +9,22 @@ import { useHistory } from 'react-router';
 
 function DetailRecipes() {
 
-  useEffect(() => {
-    fretchItems();
-  }, []);
+ 
 
   let { recipeId } = useParams();
   const [items, setItems] = useState([]);
 
-  const fretchItems = async () => {
-    const data = await fetch('http://localhost:3000/recipes/' + recipeId);
+  useEffect(() => {
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+     
+    };
+    fetch('http://localhost:3000/recipes/' + recipeId, requestOptions)
+      .then(response => response.json())
+      .then(response =>setItems(response))
 
-    const items = await data.json();
-    console.log(items);
-    setItems(items);
-  }
+  }, []);
 
   let history = useHistory();
   const handleSubmit = function (e) {

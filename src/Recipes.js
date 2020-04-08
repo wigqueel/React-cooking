@@ -14,7 +14,7 @@ function Recipes() {
     }, []);
     const [sortAsc, setSortAsc] = useState(!!localStorage.getItem('sortAsc'));
     const [items, setItems] = useState([]);
-    
+
     const [searchInput, setSearchInput] = useState(localStorage.getItem("searchInput") || "");
     const [searchCategory, setSearchCategory] = useState(localStorage.getItem("searchCategory") || "");
     const handleChange = function (e) {
@@ -26,11 +26,15 @@ function Recipes() {
         localStorage.setItem("searchCategory", e.target.value);
     }
     const fretchItems = async () => {
-        const data = await fetch('http://localhost:3000/recipes');
 
-        const items = await data.json();
-        console.log(items);
-        setItems(items);
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+        };
+        fetch('http://localhost:3000/recipes', requestOptions)
+            .then(response => response.json())
+            .then(response => setItems(response))
+
     }
 
     const sortByDate = (recipes) => {
@@ -73,12 +77,12 @@ function Recipes() {
                         }
                         value={searchCategory}
                     />
-                    
+
                 </InputGroup>
             </Container>
 
-           
-            
+
+
 
             {filterAndSortRecipes(items).filter(function (el) {
                 return (el.title.toLowerCase().includes(searchInput.toLowerCase()))
