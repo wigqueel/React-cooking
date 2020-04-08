@@ -36,7 +36,7 @@ function Recipes() {
             headers: { 'Content-Type': 'application/json' },
         };
         fetch('http://localhost:3000/recipes/' + recipeId, requestOptions)
-            .then(refresh())
+            .then(refresh)
 
     }
 
